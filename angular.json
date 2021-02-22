@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ERP-Template"
+    }
+  },
+  "defaultProject": "ERP-Template",
+  "cli": {
+    "analytics": "65034fa9-a672-4f01-aac5-d670f4711c0f"
+  }
 }

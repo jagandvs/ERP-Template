@@ -1,0 +1,91 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-5">
+      <div class="card shadow-lg border-0 rounded-lg mt-5">
+        <div class="card-header">
+          <h3 class="text-center font-weight-light my-4">
+            Login To Your Account
+          </h3>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="loginForm">
+            <div
+              class="alert alert-danger text-center"
+              role="alert"
+              *ngIf="errorMessage"
+            >
+              <strong>{{errorMessage}}</strong>
+            </div>
+            <div class="form-group">
+              <label class="small mb-1" for="companyName">Company Name</label>
+              <select
+                class="form-control"
+                formControlName="companyName"
+                [ngClass]="{'invalid': submitted && f.companyName.errors, 'valid' : submitted && !f.companyName.errors && errorMessage==''}"
+              >
+                <option
+                  *ngFor="let companyName of companyNames"
+                  [value]="companyName.CM_ID"
+                  >{{companyName.CM_NAME}}</option
+                >
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="small mb-1" for="financialYear"
+                >Financial Year</label
+              >
+              <select
+                class="form-control"
+                formControlName="financialYear"
+                [ngClass]="{'invalid': submitted && f.financialYear.errors, 'valid' : submitted && !f.financialYear.errors && errorMessage==''}"
+              >
+                <option
+                  *ngFor="let companyMaster of companyMasterDetails"
+                  [value]="companyMaster.CM_CODE"
+                  >From {{companyMaster.CM_OPENING_DATE | date : 'dd/MM/y'}} To
+                  {{companyMaster.CM_CLOSING_DATE | date : 'dd/MM/y'}}
+                </option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="small mb-1" for="username">Username</label>
+              <input
+                class="form-control"
+                id="username"
+                type="text"
+                placeholder="Enter username"
+                formControlName="username"
+                [ngClass]="{'invalid': submitted && f.username.errors, 'valid' : submitted && !f.username.errors && errorMessage==''}"
+              />
+            </div>
+            <div class="form-group">
+              <label class="small mb-1" for="password">Password</label>
+              <input
+                class="form-control"
+                id="password"
+                type="password"
+                placeholder="Enter password"
+                formControlName="password"
+                [ngClass]="{'invalid': submitted && f.password.errors, 'valid' : submitted && !f.password.errors   && errorMessage==''}"
+              />
+            </div>
+            <div
+              class="form-group d-flex align-items-center justify-content-between mt-4 mb-0"
+            >
+              <a class="small" href="#">Forgot Password?</a>
+              <button
+                type="submit"
+                name="submit"
+                class="btn btn-primary"
+                value="Login"
+                (click)="onSubmit();"
+              >
+                Login
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
